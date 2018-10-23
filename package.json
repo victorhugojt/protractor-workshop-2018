@@ -4,7 +4,9 @@
   "description": "This is a Workshop of protractor",
   "main": "index.js",
   "scripts": {
-    "test": "protractor dist/protractor/local.config.js"
+    "clean": "rm -rf dist",
+    "build": "npm run clean && tsc",
+    "test": "npm run build && protractor dist/protractor/local.config.js"
   },
   "repository": {
     "type": "git",
