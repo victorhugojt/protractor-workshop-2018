@@ -1,0 +1,41 @@
+{
+  "name": "workshop-protactor",
+  "version": "1.0.0",
+  "description": "This is a Workshop of protractor",
+  "main": "index.js",
+  "scripts": {
+    "clean": "rm -rf dist",
+    "build": "npm run clean && tsc",
+    "lint": "tslint --project tsconfig.json protractor/**/*.ts test/**/*.ts src/**/*.ts",
+    "test:local": "npm run build && protractor dist/protractor/local.config.js",
+    "test:headless": "npm run build && protractor dist/protractor/headless.config.js",
+    "test": "npm run test:headless",
+    "postinstall": "webdriver-manager update --gecko false"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/victorhugojt/protractor-workshop-2018.git"
+  },
+  "keywords": [
+    "ui-testing",
+    "dojo",
+    "practice",
+    "protactor"
+  ],
+  "author": "[Victor Hugo Jimenez] <vjimenezt@psl.com.co> ([victorhugojt)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/victorhugojt/protractor-workshop-2018/issues"
+  },
+  "homepage": "https://github.com/victorhugojt/protractor-workshop-2018#readme",
+  "dependencies": {
+    "protractor": "^5.4.1"
+  },
+  "devDependencies": {
+    "@types/jasminewd2": "^2.0.5",
+    "jasmine-spec-reporter": "^4.2.1",
+    "tslint": "^5.11.0",
+    "tslint-config-airbnb": "^5.11.0",
+    "typescript": "^3.1.3"
+  }
+}
