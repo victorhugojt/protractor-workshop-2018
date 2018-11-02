@@ -1,21 +1,17 @@
-import { $, browser, ExpectedConditions } from 'protractor';
-import { MenuContentPage } from '../src/page';
+import { $, browser } from 'protractor';
+import { MenuContentPage, ProductAddModalPage } from '../src/page';
 
 describe('Buy a t-shirt', () => {
-  const EC = ExpectedConditions;
 
   const menuContentPage: MenuContentPage = new MenuContentPage();
+  const productAddModalPage: ProductAddModalPage = new ProductAddModalPage();
 
   it('then should be bought a t-shirt', async () => {
     await browser.get('http://automationpractice.com/');
     await menuContentPage.goToTShirtMenu();
+    await menuContentPage.addToCart();
+    await productAddModalPage.addProduct();
 
-    const btn = $('#center_column a.button.ajax_add_to_cart_button.btn.btn-default');
-    const isClickable = EC.elementToBeClickable(btn);
-    browser.wait(isClickable, 5000);
-    await btn.click();
-
-    await $('[style*="display: block;"] .button-container > a').click();
     await $('.cart_navigation span').click();
 
     await $('#email').sendKeys('aperdomobo@gmail.com');
