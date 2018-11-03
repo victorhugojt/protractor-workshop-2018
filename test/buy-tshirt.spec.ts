@@ -1,26 +1,25 @@
 import { $, browser } from 'protractor';
-import { MenuContentPage, ProductAddModalPage } from '../src/page';
+import { AddressPage, MenuContentPage,
+  OrderSumaryPage, ProductAddModalPage, ShippingPage,  SignInPage } from '../src/page';
 
 describe('Buy a t-shirt', () => {
 
   const menuContentPage: MenuContentPage = new MenuContentPage();
   const productAddModalPage: ProductAddModalPage = new ProductAddModalPage();
+  const orderSumaryPage: OrderSumaryPage = new OrderSumaryPage();
+  const signInPage: SignInPage = new SignInPage();
+  const addressPage: AddressPage = new AddressPage();
+  const shippingPage: ShippingPage = new ShippingPage();
 
   it('then should be bought a t-shirt', async () => {
     await browser.get('http://automationpractice.com/');
     await menuContentPage.goToTShirtMenu();
     await menuContentPage.addToCart();
     await productAddModalPage.addProduct();
-
-    await $('.cart_navigation span').click();
-
-    await $('#email').sendKeys('aperdomobo@gmail.com');
-    await $('#passwd').sendKeys('WorkshopProtractor');
-    await $('#SubmitLogin > span').click();
-
-    await $('#center_column > form > p > button > span').click();
-
-    await $('#cgv').click();
+    await orderSumaryPage.goToSummary();
+    await signInPage.sigIn();
+    await addressPage.goToAddress();
+    await shippingPage.goToShipping();
 
     await $('#form > p > button > span').click();
     await $('#HOOK_PAYMENT > div:nth-child(1) > div > p > a').click();
