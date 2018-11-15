@@ -7,7 +7,7 @@ export class PersonalInformationPage {
   private experienceField = element(by.name('experience'));
   private professionField = element(by.name('profession'));
   private toolsField = element(by.name('tools'));
-  private continentField = element(by.name('continent'));
+  private continentField = element(by.id('continent'));
 
   public async fillForm(formData: any): Promise<void> {
     await this.firstNameField.sendKeys(formData.firstName);
